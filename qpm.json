@@ -2,12 +2,12 @@
   "sharedDir": "shared",
   "dependenciesDir": "extern",
   "info": {
-    "name": "#{name}",
-    "id": "#{id}",
+    "name": "Speecil Tweaks",
+    "id": "SpeecilTweaks",
     "version": "0.1.0",
     "url": null,
     "additionalData": {
-      "overrideSoName": "lib#{id}.so"
+      "overrideSoName": "libSpeecilTweaks.so"
     }
   },
   "dependencies": [
@@ -48,6 +48,11 @@
     {
       "id": "custom-types",
       "versionRange": "^0.15.22",
+      "additionalData": {}
+    },
+    {
+      "id": "config-utils",
+      "versionRange": "^1.0.1",
       "additionalData": {}
     }
   ]

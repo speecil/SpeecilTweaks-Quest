@@ -2,7 +2,7 @@
 include(qpm_defines.cmake)
 
 # override mod id
-set(MOD_ID "#{id}")
+set(MOD_ID "SpeecilTweaks")
 
 # Enable link time optimization
 # In my experience, this can be highly unstable but it nets a huge size optimization and likely performance
@@ -99,3 +99,5 @@ add_custom_command(TARGET ${COMPILE_ID} POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy ${a_file} debug/${file}
         COMMENT "Copy a files for ndk stack")
         endforeach()
+        
+include(assets_include.cmake)

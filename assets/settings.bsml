@@ -1,0 +1,37 @@
+<bg id='root'  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='https://raw.githubusercontent.com/RedBrumbler/Quest-BSML-Docs/gh-pages/schema.xsd'>
+    <tab-selector tab-tag='tabs'/>
+
+    <horizontal preferred-width="58" preferred-height="80" pad-top="8">
+        <tab tab-name="Menu Tweaks" tags="tabs">
+            <vertical bg="round-rect-panel" pad="2" spacing="4">
+                <text text="Play and Practice Button" font-align="Top" font-size="7" />
+                <toggle-setting value="EnablePlayButton" text="Enable Play Button" apply-on-change="true" />
+                <string-setting value="aText" text="Play Button Text" apply-on-change="true" />
+                <toggle-setting value="EnablePracticeButton" text="Enable Practice Button" apply-on-change="true" />
+                <string-setting value="pText" text="Practice Button Text" apply-on-change="true" />
+                <text text="Main Menu" font-align="Top" font-size="7" />
+                <color-setting value="MenuButtonColour" text="Main Menu Button Text Colour" apply-on-change="true" />
+            </vertical>
+        </tab>
+        <tab tab-name="Results Screen" tags="tabs">
+            <vertical bg="round-rect-panel" pad="2" spacing="4">
+                <string-setting value="rText" text="Pass Result Text" apply-on-change="true" />
+                <string-setting value="rfText" text="Fail Result Text" apply-on-change="true" />
+                <color-setting value="rBackColour" text="Pass Background Colour" apply-on-change="true" />
+                <color-setting value="rfBackColour" text="Fail Background Colour" apply-on-change="true" />
+            </vertical>
+        </tab>
+        <tab tab-name="Gameplay" tags="tabs">
+            <vertical bg="round-rect-panel" pad="2" spacing="4">
+                <toggle-setting value="DisableAllDebris" text="Disable ALL Particles/Debris" apply-on-change="true" on-change="SoftRestart"/>
+                <toggle-setting value="EnablePMenuTweaks" text="Enable Pause Menu Tweaks" apply-on-change="true" />
+                <color-setting value="PMenuColour" text="Pause Menu Text Colour" apply-on-change="true" />
+            </vertical>
+        </tab>
+        <tab tab-name="Misc" tags="tabs">
+            <vertical bg="round-rect-panel" pad="2" spacing="4">
+                <toggle-setting value="DisableBlur" text="Disable Blur" apply-on-change="true" />
+            </vertical>
+        </tab>
+    </horizontal>
+</bg>
