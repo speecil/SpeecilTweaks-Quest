@@ -1,6 +1,29 @@
-# #{name}
+# Speecil Tweaks - the BSML rewrite!
 
-#{description}
+Cool little tweaks I think are pretty neat
+
+## Features
+
+### Menu Tweaks
+  - Enable and disable each button
+  - Change the text for each button 
+  - Change the main menu button's text colour
+ 
+### Results Screen Editor
+  - Change the result text based on whether you passed or failed a level
+  - Change the colour of the result tab based on whether you passed or failed a level
+
+### Gameplay Tweaks
+  - Change the result text based on whether you passed or failed a level
+  - Change the colour of the result tab based on whether you passed or failed a level
+  - Disable the bomb explosion effect
+  - Disable pause menu song artist text
+  - Change pause menu song title colour
+  - Increase pause menu song title size
+  
+### Miscellaneous Tweaks
+
+  - Disable the blur on the sabers
 
 ## Credits
 
