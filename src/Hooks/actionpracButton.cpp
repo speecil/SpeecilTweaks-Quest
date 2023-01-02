@@ -22,6 +22,9 @@ using namespace UnityEngine::UI;
 using namespace HMUI;
 
 using namespace GlobalNamespace;
+
+GlobalNamespace::StandardLevelDetailView * test;
+
 // allows for the play button text to be changed
 static void setActionButton(UnityEngine::UI::Button * actionButton) {
 
@@ -71,6 +74,8 @@ MAKE_AUTO_HOOK_MATCH(LevelUIHook, &StandardLevelDetailView::RefreshContent, void
   }
   else{
     practice -> SetActive(true);
+    getLogger().info("bru");
+    getLogger().info("bru");
     setPracticeButton(self -> practiceButton);
     getLogger().info("Kept the practice button on");
 

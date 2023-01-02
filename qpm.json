@@ -5,6 +5,7 @@
     "name": "Speecil Tweaks",
     "id": "SpeecilTweaks",
     "version": "1.1.0",
+    "coverImage": "cover.png",
     "url": null,
     "additionalData": {
       "overrideSoName": "libSpeecilTweaks.so"
