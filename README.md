@@ -16,7 +16,7 @@ Cool little tweaks I think are pretty neat
 ### Gameplay Tweaks
   - Change the result text based on whether you passed or failed a level
   - Change the colour of the result tab based on whether you passed or failed a level
-  - Disable the bomb explosion effect
+  - One Click Particle/Debris Remover
   - Disable pause menu song artist text
   - Change pause menu song title colour
   - Increase pause menu song title size
