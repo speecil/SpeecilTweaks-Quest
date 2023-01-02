@@ -12,8 +12,7 @@ using namespace GlobalNamespace;
 using namespace UnityEngine;
 using namespace QuestUI;
 using namespace custom_types;
-using namespace QuestUI::BeatSaberUI;
-using namespace TMPro;
+
 static ModInfo modInfo; // Stores the ID and version of our mod, and is sent to the modloader upon startup
 
 // Loads the config from disk using our modInfo, then returns it for use

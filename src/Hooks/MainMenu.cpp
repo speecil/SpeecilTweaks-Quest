@@ -7,7 +7,7 @@ MAKE_AUTO_HOOK_MATCH(MainMenuUIHook, &MainMenuViewController::DidActivate, void,
 *self, bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling) {
     getMainConfig().inMulti.SetValue(false);
     getLogger().info("User left Multiplayer, taking control over the play buttons active status.");
-
+    
     MainMenuUIHook(self, firstActivation, addedToHierarchy, screenSystemEnabling); 
 
     UnityEngine::UI::Button *soloMenuButton = self->soloButton;

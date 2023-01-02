@@ -2,7 +2,7 @@
 
 #include "bsml/shared/Helpers/creation.hpp"
 #include "bsml/shared/BSML.hpp"
-#include "assets/settings.bsml"
+#include "assets.hpp"
 #include "HMUI/FlowCoordinator.hpp"
 #include "HMUI/ViewController_AnimationDirection.hpp"
 #include "HMUI/ViewController_AnimationType.hpp"
@@ -19,11 +19,11 @@ namespace SpeecilTweaks::UI
         HMUI::FlowCoordinator *parentFlow;
         SpeecilTweaks::UI::FlowCoordinators::SpeecilTweaksFlowCoordinator *flow;
         public:
-            void Init()
+            void Init() 
             {
-                BSML::Register::RegisterMenuButton("Speecil Tweaks", "tweak!", [this]()
+                BSML::Register::RegisterMenuButton("Speecil Tweaks", "Tweak your game!", [this]()
                 {
-                    ShowFlow(false);
+                    ShowFlow(true);
                 });
             }
 
@@ -35,6 +35,9 @@ namespace SpeecilTweaks::UI
                 parentFlow = QuestUI::BeatSaberUI::GetMainFlowCoordinator()->YoungestChildFlowCoordinatorOrSelf();
                 parentFlow->PresentFlowCoordinator(flow, nullptr, HMUI::ViewController::AnimationDirection::Horizontal, HMUI::ViewController::AnimationType::Out, false);
             }
+            
+
+            
     };
 
     inline static UIManager manager;

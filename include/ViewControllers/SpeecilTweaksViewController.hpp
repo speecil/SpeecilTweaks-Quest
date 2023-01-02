@@ -14,8 +14,8 @@ using namespace UnityEngine;
 
 DECLARE_CLASS_CODEGEN(SpeecilTweaks::UI::ViewControllers, SpeecilTweaksUI, HMUI::ViewController,
     DECLARE_OVERRIDE_METHOD(void, DidActivate, GET_FIND_METHOD(&HMUI::ViewController::DidActivate), bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling);
-    DECLARE_INSTANCE_METHOD(void, Update);
-    DECLARE_INSTANCE_METHOD(bool, SoftRestart);
+    DECLARE_INSTANCE_METHOD(void, Patreon);
+    DECLARE_INSTANCE_METHOD(void, Discord);
     
     DECLARE_BSML_PROPERTY(bool, EnablePlayButton);
     DECLARE_BSML_PROPERTY(bool, EnablePracticeButton);

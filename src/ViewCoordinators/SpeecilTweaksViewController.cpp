@@ -1,11 +1,12 @@
 #include "ViewControllers/SpeecilTweaksViewController.hpp"
 using namespace SpeecilTweaks::UI::ViewControllers;
 using namespace SpeecilTweaks::UI;
-
+#include "main.hpp"
 #include "MainConfig.hpp"
 #include "bsml/shared/BSML.hpp"
 #include "assets.hpp"
 #include "GlobalNamespace/MenuTransitionsHelper.hpp"
+#include "UnityEngine/Application.hpp"
 
 using namespace UnityEngine;
 using namespace GlobalNamespace;
@@ -19,11 +20,23 @@ namespace SpeecilTweaks::UI
     {
         if (!firstActivation)
             return;
-
         BSML::parse_and_construct(IncludedAssets::settings_bsml, this->get_transform(), this);
     }
 
-    Color SpeecilTweaksUI::get_PMenuColour() { return getMainConfig().PMenuColour.GetValue(); }
+    void SpeecilTweaksUI::Patreon()
+    {
+        Application::OpenURL("https://discord.gg/BBZeJSKvxh");
+    }
+
+    void SpeecilTweaksUI::Discord()
+    {
+        Application::OpenURL("https://patreon.com/speecil");
+    }
+
+    Color SpeecilTweaksUI::get_PMenuColour()
+    {
+        return getMainConfig().PMenuColour.GetValue();
+    }
     void SpeecilTweaksUI::set_PMenuColour(Color value) { getMainConfig().PMenuColour.SetValue(value); }
 
     Color SpeecilTweaksUI::get_MenuButtonColour() { return getMainConfig().MenuButtonColour.GetValue(); }

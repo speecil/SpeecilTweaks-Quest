@@ -7,19 +7,24 @@ using namespace SpeecilTweaks::UI::ViewControllers;
 #include "MainConfig.hpp"
 #include "bsml/shared/BSML.hpp"
 #include "assets.hpp"
+#include "main.hpp"
 #include "GlobalNamespace/MenuTransitionsHelper.hpp"
 #include "questui/shared/BeatSaberUI.hpp"
 #include "questui/shared/QuestUI.hpp"
+#include "UnityEngine/Application.hpp"
+#include "UnityEngine/PointerType.hpp"
 using namespace QuestUI;
 using namespace UnityEngine;
 using namespace GlobalNamespace;
 SpeecilTweaksUI *test;
-
+bool orig;
 DEFINE_TYPE(SpeecilTweaks::UI::FlowCoordinators, SpeecilTweaksFlowCoordinator);
 
 void SpeecilTweaksFlowCoordinator::DidActivate(bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling)
 {
-    SetTitle("Speecil Tweaks", HMUI::ViewController::AnimationType::In);
+    
+    orig = getMainConfig().DisableAllDebris.GetValue();
+    SetTitle("Speecil Tweaks - v1.1.0 DEV", HMUI::ViewController::AnimationType::In);
     showBackButton = true;
 
     SpeecilTweaksViewController = QuestUI::BeatSaberUI::CreateViewController<ViewControllers::SpeecilTweaksUI *>();
@@ -29,9 +34,14 @@ void SpeecilTweaksFlowCoordinator::DidActivate(bool firstActivation, bool addedT
 
 void SpeecilTweaksFlowCoordinator::BackButtonWasPressed(HMUI::ViewController *topViewController)
 {
-    this->parentFlowCoordinator->DismissFlowCoordinator(this, HMUI::ViewController::AnimationDirection::Horizontal, nullptr, false);
-    if (test->SoftRestart())
+    if (orig != getMainConfig().DisableAllDebris.GetValue())
     {
-        Resources::FindObjectsOfTypeAll<MenuTransitionsHelper *>()[0]->RestartGame(nullptr);
+        getLogger().info("LMFAOO cfing debirs not the same");
+        UnityEngine::Resources::UnloadUnusedAssets();
+        UnityEngine::Resources::FindObjectsOfTypeAll<GlobalNamespace::MenuTransitionsHelper *>().FirstOrDefault()->RestartGame(nullptr);
+    }
+    else
+    {
+        this->parentFlowCoordinator->DismissFlowCoordinator(this, HMUI::ViewController::AnimationDirection::Horizontal, nullptr, false);
     }
 }
