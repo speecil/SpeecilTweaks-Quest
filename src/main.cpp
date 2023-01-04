@@ -7,6 +7,7 @@
 #include "UI/UIManager.hpp"
 #include "bsml/shared/BSMLDataCache.hpp"
 
+
 using namespace BSML;
 using namespace GlobalNamespace;
 using namespace UnityEngine;
