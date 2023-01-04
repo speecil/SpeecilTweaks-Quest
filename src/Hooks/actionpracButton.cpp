@@ -22,9 +22,6 @@ using namespace UnityEngine::UI;
 using namespace HMUI;
 
 using namespace GlobalNamespace;
-
-GlobalNamespace::StandardLevelDetailView * test;
-
 // allows for the play button text to be changed
 static void setActionButton(UnityEngine::UI::Button * actionButton) {
 
@@ -74,8 +71,6 @@ MAKE_AUTO_HOOK_MATCH(LevelUIHook, &StandardLevelDetailView::RefreshContent, void
   }
   else{
     practice -> SetActive(true);
-    getLogger().info("bru");
-    getLogger().info("bru");
     setPracticeButton(self -> practiceButton);
     getLogger().info("Kept the practice button on");
 
@@ -87,26 +82,3 @@ MAKE_AUTO_HOOK_MATCH(PracLevelUIHook, &PracticeViewController::RefreshUI, void, 
   PracLevelUIHook(self);
   setPracticePlayButton(self->playButton);
   }
-
-
-/*MAKE_AUTO_HOOK_MATCH(m_DidActivate,&StandardLevelDetailViewController::DidActivate, void, StandardLevelDetailViewController* self, bool firstActivation, bool addedToHeirarchy, bool screenSystemEnabling) {
-
-    m_DidActivate(self, firstActivation, addedToHeirarchy, screenSystemEnabling);
-
-
-    auto* imageCoverTransform = self->get_transform()->Find("LevelDetail/LevelBarBig/SongArtwork")->GetComponent<RectTransform*>();
-
-    imageCoverTransform->set_sizeDelta(Vector2(70.5, 58.0));
-    imageCoverTransform->set_localPosition(Vector3(-34.4, -56, 0));
-    imageCoverTransform->SetAsFirstSibling();
-
-    auto* imageView = imageCoverTransform->GetComponent<ImageView*>();
-
-    imageView->set_color(Color(0.5, 0.5, 0.5, 1));
-    imageView->set_preserveAspect(false);
-    imageView->skew = 0.0f;
-
-    auto* TitleTransform = self->levelBar()->getTransform();
-
-    TitleTransform->set_localPosition(Vector3(-34.4, 0, 0));
-}*/

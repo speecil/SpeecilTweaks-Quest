@@ -24,7 +24,7 @@ void SpeecilTweaksFlowCoordinator::DidActivate(bool firstActivation, bool addedT
 {
     
     orig = getMainConfig().DisableAllDebris.GetValue();
-    SetTitle("Speecil Tweaks - v1.1.0 DEV", HMUI::ViewController::AnimationType::In);
+    SetTitle("Speecil Tweaks", HMUI::ViewController::AnimationType::In);
     showBackButton = true;
 
     SpeecilTweaksViewController = QuestUI::BeatSaberUI::CreateViewController<ViewControllers::SpeecilTweaksUI *>();
