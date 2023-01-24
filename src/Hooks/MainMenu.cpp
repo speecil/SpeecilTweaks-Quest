@@ -2,12 +2,17 @@
 #include "MainConfig.hpp"
 #include "Hooks.hpp"
 #include "main.hpp"
+#include "GlobalNamespace/PlayerData.hpp"
+#include "GlobalNamespace/PlayerDataModel.hpp"
+using namespace UnityEngine;
 using namespace GlobalNamespace;
+using namespace TMPro;
 MAKE_AUTO_HOOK_MATCH(MainMenuUIHook, &MainMenuViewController::DidActivate, void, GlobalNamespace::MainMenuViewController
 *self, bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling) {
     getMainConfig().inMulti.SetValue(false);
     getLogger().info("User left Multiplayer, taking control over the play buttons active status.");
-    
+    auto playerDataModel = UnityEngine::Object::FindObjectOfType<GlobalNamespace::PlayerDataModel *>();
+    auto playerData = playerDataModel->playerData;
     MainMenuUIHook(self, firstActivation, addedToHierarchy, screenSystemEnabling); 
 
     UnityEngine::UI::Button *soloMenuButton = self->soloButton;
@@ -26,7 +31,8 @@ MAKE_AUTO_HOOK_MATCH(MainMenuUIHook, &MainMenuViewController::DidActivate, void,
     UnityEngine::GameObject *gameObject3 = partyMenuButton->get_gameObject();
     HMUI::CurvedTextMeshPro *partyMenuText = gameObject3->GetComponentInChildren<HMUI::CurvedTextMeshPro *>();
     //
-
+    //
+    soloMenuText->SetText(playerData->get_playerName());
     soloMenuText->set_color(getMainConfig().MenuButtonColour.GetValue());
     onlineMenuText->set_color(getMainConfig().MenuButtonColour.GetValue());
     campaignMenuText->set_color(getMainConfig().MenuButtonColour.GetValue());

@@ -18,9 +18,10 @@ namespace SpeecilTweaks::UI
 
     void SpeecilTweaksUI::DidActivate(bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling)
     {
-        if (!firstActivation)
-            return;
-        BSML::parse_and_construct(IncludedAssets::settings_bsml, this->get_transform(), this);
+        if (firstActivation)
+        {
+            BSML::parse_and_construct(IncludedAssets::settings_bsml, this->get_transform(), this);
+        }
     }
 
     void SpeecilTweaksUI::Patreon()

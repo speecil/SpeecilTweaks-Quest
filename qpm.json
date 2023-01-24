@@ -5,7 +5,6 @@
     "name": "Speecil Tweaks",
     "id": "SpeecilTweaks",
     "version": "1.1.0",
-    "coverImage": "cover.png",
     "url": null,
     "additionalData": {
       "overrideSoName": "libSpeecilTweaks.so"
@@ -14,7 +13,7 @@
   "dependencies": [
     {
       "id": "beatsaber-hook",
-      "versionRange": "^3.8.0",
+      "versionRange": "^3.14.0",
       "additionalData": {
         "extraFiles": [
           "src/inline-hook"
@@ -54,6 +53,11 @@
     {
       "id": "config-utils",
       "versionRange": "^1.0.1",
+      "additionalData": {}
+    },
+    {
+      "id": "bs-utils",
+      "versionRange": "^0.7.2",
       "additionalData": {}
     }
   ]

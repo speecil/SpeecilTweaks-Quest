@@ -13,23 +13,26 @@ using namespace SpeecilTweaks::UI::ViewControllers;
 #include "questui/shared/QuestUI.hpp"
 #include "UnityEngine/Application.hpp"
 #include "UnityEngine/PointerType.hpp"
+#include "UI/UIManager.hpp"
 using namespace QuestUI;
 using namespace UnityEngine;
 using namespace GlobalNamespace;
-SpeecilTweaksUI *test;
+
 bool orig;
 DEFINE_TYPE(SpeecilTweaks::UI::FlowCoordinators, SpeecilTweaksFlowCoordinator);
 
 void SpeecilTweaksFlowCoordinator::DidActivate(bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling)
 {
-    
     orig = getMainConfig().DisableAllDebris.GetValue();
-    SetTitle("Speecil Tweaks", HMUI::ViewController::AnimationType::In);
-    showBackButton = true;
+    if (firstActivation)
+    {
+        SetTitle("Speecil Tweaks", HMUI::ViewController::AnimationType::In);
+        showBackButton = true;
 
-    SpeecilTweaksViewController = QuestUI::BeatSaberUI::CreateViewController<ViewControllers::SpeecilTweaksUI *>();
+        SpeecilTweaksViewController = QuestUI::BeatSaberUI::CreateViewController<ViewControllers::SpeecilTweaksUI *>();
 
-    ProvideInitialViewControllers(SpeecilTweaksViewController, nullptr, nullptr, nullptr, nullptr);
+        ProvideInitialViewControllers(SpeecilTweaksViewController, nullptr, nullptr, nullptr, nullptr);
+    }
 }
 
 void SpeecilTweaksFlowCoordinator::BackButtonWasPressed(HMUI::ViewController *topViewController)

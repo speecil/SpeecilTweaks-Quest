@@ -16,6 +16,7 @@ DECLARE_CLASS_CODEGEN(SpeecilTweaks::UI::FlowCoordinators, SpeecilTweaksFlowCoor
 
     DECLARE_OVERRIDE_METHOD(void, DidActivate, GET_FIND_METHOD(&HMUI::FlowCoordinator::DidActivate), bool firstActivation, bool addedToHeirarchy, bool screenSystemEnabling);
     DECLARE_OVERRIDE_METHOD(void, BackButtonWasPressed, GET_FIND_METHOD(&HMUI::FlowCoordinator::BackButtonWasPressed), HMUI::ViewController* topViewController);
+    
 )
 
-//inline SpeecilTweaks::UI::FlowCoordinators::SpeecilTweaksFlowCoordinator *fcInstance;
+inline SpeecilTweaks::UI::FlowCoordinators::SpeecilTweaksFlowCoordinator *fcInstance;
