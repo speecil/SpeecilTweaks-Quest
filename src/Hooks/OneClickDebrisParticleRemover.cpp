@@ -37,11 +37,14 @@
 #include "GlobalNamespace/NoteDebris.hpp"
 #include "GlobalNamespace/ConditionalMaterialSwitcher.hpp"
 #include "GlobalNamespace/MaterialPropertyBlockController.hpp"
-
+#include "GlobalNamespace/PlayerData.hpp"
+#include "GlobalNamespace/PlayerDataModel.hpp"
+#include "GlobalNamespace/PlayerDataModelHelper.hpp"
+#include "GlobalNamespace/PlayerSpecificSettings.hpp"
 using namespace GlobalNamespace;
 using namespace UnityEngine;
 using namespace SpeecilTweaks::UI::ViewControllers;
-
+GlobalNamespace::PlayerData * fortnite;
 MAKE_AUTO_HOOK_MATCH(NoteDebris_Init, &GlobalNamespace::NoteDebris::Init, void, NoteDebris* self, ColorType color, Vector3 pos, Quaternion rot, Vector3 moveVec, Vector3 scale, Vector3 posoff, Quaternion rotoff,
 Vector3 cpoint, Vector3 cnorm, Vector3 force, Vector3 torque, float lifeTime)
 {
@@ -59,6 +62,13 @@ MAKE_AUTO_HOOK_MATCH(SceneManager_SetActiveScene, &UnityEngine::SceneManagement:
     bool result = SceneManager_SetActiveScene(newActiveScene);
 
     std::string sceneName = newActiveScene.get_name();
+    
+    if(sceneName == "GameCore" && getMainConfig().DisableAllDebris.GetValue()){
+        auto playerDataModal = UnityEngine::Object::FindObjectOfType<PlayerDataModel *>();
+        auto playerData = playerDataModal->playerData;
+        bool debrisToggle = playerData->playerSpecificSettings->reduceDebris;
+        debrisToggle = false;
+    }
 
     if(sceneName == "MainMenu" && getMainConfig().DisableAllDebris.GetValue() || (sceneName == "GameCore" && getMainConfig().DisableAllDebris.GetValue()))
     {
