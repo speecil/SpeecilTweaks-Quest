@@ -2,7 +2,6 @@
 #include "Hooks.hpp"
 #include "MainConfig.hpp"
 #include "assets.hpp"
-#include "extern\includes\config-utils\shared\config-utils.hpp"
 #include "bsml/shared/BSML.hpp"
 #include "UI/UIManager.hpp"
 #include "bsml/shared/BSMLDataCache.hpp"
