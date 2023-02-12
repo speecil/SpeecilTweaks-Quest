@@ -91,4 +91,16 @@ namespace SpeecilTweaks::UI
 
     bool SpeecilTweaksUI::get_EnablePMenuTweaks() { return getMainConfig().EnablePMenuTweaks.GetValue(); }
     void SpeecilTweaksUI::set_EnablePMenuTweaks(bool value) { getMainConfig().EnablePMenuTweaks.SetValue(value); }
+
+    bool SpeecilTweaksUI::get_safetySkip() { return getMainConfig().safetySkip.GetValue(); }
+    void SpeecilTweaksUI::set_safetySkip(bool value) { getMainConfig().safetySkip.SetValue(value); }
+
+    bool SpeecilTweaksUI::get_DisableRumble() { return getMainConfig().DisableRumble.GetValue(); }
+    void SpeecilTweaksUI::set_DisableRumble(bool value) { getMainConfig().DisableRumble.SetValue(value); }
+
+    bool SpeecilTweaksUI::get_DisableHitScore() { return getMainConfig().DisableHitScore.GetValue(); }
+    void SpeecilTweaksUI::set_DisableHitScore(bool value) { getMainConfig().DisableHitScore.SetValue(value); }
+
+    bool SpeecilTweaksUI::get_DontResetSettings() { return getMainConfig().DontResetSettings.GetValue(); }
+    void SpeecilTweaksUI::set_DontResetSettings(bool value) { getMainConfig().DontResetSettings.SetValue(value); }
 }

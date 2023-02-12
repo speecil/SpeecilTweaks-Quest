@@ -17,4 +17,10 @@ DECLARE_CONFIG(MainConfig,
     CONFIG_VALUE(PMenuColour, Color, "Pause Song Name Colour", Color(0.1, 0.3, 1.0, 1.0));
     CONFIG_VALUE(inMulti, bool, "inMulti", false);
     CONFIG_VALUE(DisableBlur, bool, "Disable Motion Blur", false);
+    CONFIG_VALUE(safetySkip, bool, "Disable Health and Safety warning", false);
+    CONFIG_VALUE(DisableRumble, bool, "Disable All In Game Rumble", false);
+    CONFIG_VALUE(DisableHitScore, bool, "Disable Hit Score", false);
+    CONFIG_VALUE(DontResetSettings, bool, "Doesnt reset the base game settings on cancel", false);
+
+
 )

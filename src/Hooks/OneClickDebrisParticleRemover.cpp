@@ -16,7 +16,7 @@
 #include "beatsaber-hook/shared/utils/utils.h"
 #include "beatsaber-hook/shared/utils/logging.hpp"
 #include "beatsaber-hook/shared/utils/hooking.hpp"
-#include "beatsaber-hook/shared/utils/il2cpp-utils.hpp" 
+#include "beatsaber-hook/shared/utils/il2cpp-utils.hpp"
 #include "beatsaber-hook/shared/utils/il2cpp-functions.hpp"
 #include "beatsaber-hook/shared/config/config-utils.hpp"
 
@@ -32,7 +32,6 @@
 #include "UnityEngine/MeshRenderer.hpp"
 #include "UnityEngine/Color.hpp"
 
-
 #include "GlobalNamespace/ColorType.hpp"
 #include "GlobalNamespace/NoteDebris.hpp"
 #include "GlobalNamespace/ConditionalMaterialSwitcher.hpp"
@@ -41,20 +40,23 @@
 #include "GlobalNamespace/PlayerDataModel.hpp"
 #include "GlobalNamespace/PlayerDataModelHelper.hpp"
 #include "GlobalNamespace/PlayerSpecificSettings.hpp"
+#include "GlobalNamespace/NoteDebrisSpawner.hpp"
+#include "GlobalNamespace/ObstacleSaberSparkleEffectManager.hpp"
+
 using namespace GlobalNamespace;
 using namespace UnityEngine;
 using namespace SpeecilTweaks::UI::ViewControllers;
-GlobalNamespace::PlayerData * fortnite;
-MAKE_AUTO_HOOK_MATCH(NoteDebris_Init, &GlobalNamespace::NoteDebris::Init, void, NoteDebris* self, ColorType color, Vector3 pos, Quaternion rot, Vector3 moveVec, Vector3 scale, Vector3 posoff, Quaternion rotoff,
-Vector3 cpoint, Vector3 cnorm, Vector3 force, Vector3 torque, float lifeTime)
+
+MAKE_AUTO_HOOK_MATCH(NoteDebrisHook, &NoteDebrisSpawner::SpawnDebris, void, NoteDebrisSpawner *self,
+                     GlobalNamespace::NoteData::GameplayType noteGameplayType, UnityEngine::Vector3 cutPoint,
+                     UnityEngine::Vector3 cutNormal, float saberSpeed, UnityEngine::Vector3 saberDir,
+                     UnityEngine::Vector3 notePos, UnityEngine::Quaternion noteRotation, UnityEngine::Vector3 noteScale,
+                     GlobalNamespace::ColorType colorType, float timeToNextColorNote, UnityEngine::Vector3 moveVec)
 {
     if (getMainConfig().DisableAllDebris.GetValue())
-    {
-        lifeTime = 0;
-        scale = 0;
-        self->set_enabled(false);
-    }
-    NoteDebris_Init(self, color, pos, rot, moveVec, scale, posoff, rotoff, cpoint, cnorm, force, torque, lifeTime);
+        return;
+    NoteDebrisHook(self, noteGameplayType, cutPoint, cutNormal, saberSpeed, saberDir, notePos, noteRotation, noteScale,
+                   colorType, timeToNextColorNote, moveVec);
 }
 
 MAKE_AUTO_HOOK_MATCH(SceneManager_SetActiveScene, &UnityEngine::SceneManagement::SceneManager::SetActiveScene, bool, UnityEngine::SceneManagement::Scene newActiveScene)
@@ -62,36 +64,28 @@ MAKE_AUTO_HOOK_MATCH(SceneManager_SetActiveScene, &UnityEngine::SceneManagement:
     bool result = SceneManager_SetActiveScene(newActiveScene);
 
     std::string sceneName = newActiveScene.get_name();
-    
-    if(sceneName == "GameCore" && getMainConfig().DisableAllDebris.GetValue()){
-        auto playerDataModal = UnityEngine::Object::FindObjectOfType<PlayerDataModel *>();
-        auto playerData = playerDataModal->playerData;
-        bool debrisToggle = playerData->playerSpecificSettings->reduceDebris;
-        debrisToggle = false;
-    }
 
-    if(sceneName == "MainMenu" && getMainConfig().DisableAllDebris.GetValue() || (sceneName == "GameCore" && getMainConfig().DisableAllDebris.GetValue()))
+    if (sceneName == "MainMenu" && getMainConfig().DisableAllDebris.GetValue() || (sceneName == "GameCore" && getMainConfig().DisableAllDebris.GetValue()))
     {
         for (auto particle : UnityEngine::Resources::FindObjectsOfTypeAll<UnityEngine::ParticleSystem *>())
         {
-            if(particle->get_name() == "DustPS")
+            if (particle->get_name() == "DustPS")
             {
                 particle->get_gameObject()->SetActive(false);
             }
         }
     }
     return result;
-    
 }
 
 MAKE_AUTO_HOOK_MATCH(SaberClashEffect_Start, &SaberClashEffect::Start, void, SaberClashEffect *self)
 {
-    if(getMainConfig().DisableAllDebris.GetValue())
+    if (getMainConfig().DisableAllDebris.GetValue())
     {
         self->sparkleParticleSystem->get_gameObject()->SetActive(false);
         self->glowParticleSystem->get_gameObject()->SetActive(false);
     }
-    SaberClashEffect_Start(self); 
+    SaberClashEffect_Start(self);
 }
 
 MAKE_AUTO_HOOK_MATCH(NoteCutParticlesEffect_SpawnParticles, &NoteCutParticlesEffect::SpawnParticles, void, NoteCutParticlesEffect *self, UnityEngine::Vector3 cutPoint, UnityEngine::Vector3 cutNormal, UnityEngine::Vector3 saberDir, float saberSpeed, UnityEngine::Vector3 noteMovementVec, UnityEngine::Color32 color, int sparkleParticlesCount, int explosionParticlesCount, float lifetimeMultiplier)

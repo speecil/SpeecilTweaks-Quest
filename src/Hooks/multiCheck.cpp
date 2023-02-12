@@ -7,5 +7,5 @@ MAKE_AUTO_HOOK_MATCH(multiCheck, &LobbySetupViewController::DidActivate, void, L
 {
     multiCheck(self, firstActivation, addedToHierarchy, screenSystemEnabling);
     getMainConfig().inMulti.SetValue(true);
-    getLogger().info("User connected to multiplayer, not allowing user to alter the active state of the play button");
+    getLogger().info("User connected to multiplayer");
 }

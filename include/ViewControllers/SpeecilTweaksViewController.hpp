@@ -22,6 +22,10 @@ DECLARE_CLASS_CODEGEN(SpeecilTweaks::UI::ViewControllers, SpeecilTweaksUI, HMUI:
     DECLARE_BSML_PROPERTY(bool, DisableAllDebris);
     DECLARE_BSML_PROPERTY(bool, EnablePMenuTweaks);
     DECLARE_BSML_PROPERTY(bool, DisableBlur);
+    DECLARE_BSML_PROPERTY(bool, safetySkip);
+    DECLARE_BSML_PROPERTY(bool, DisableRumble);
+    DECLARE_BSML_PROPERTY(bool, DisableHitScore);
+    DECLARE_BSML_PROPERTY(bool, DontResetSettings);
 
     DECLARE_BSML_PROPERTY(StringW, pText);
     DECLARE_BSML_PROPERTY(StringW, aText);
