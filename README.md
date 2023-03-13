@@ -1,4 +1,4 @@
-# Speecil Tweaks - the BSML rewrite!
+# Speecil Tweaks - for Quest
 
 Cool little tweaks I think are pretty neat
 
