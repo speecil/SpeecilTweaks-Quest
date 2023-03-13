@@ -14,6 +14,7 @@ using namespace SpeecilTweaks::UI::ViewControllers;
 #include "UnityEngine/Application.hpp"
 #include "UnityEngine/PointerType.hpp"
 #include "UI/UIManager.hpp"
+#include "UnityEngine/ParticleSystem.hpp"
 using namespace QuestUI;
 using namespace UnityEngine;
 using namespace GlobalNamespace;
@@ -37,14 +38,15 @@ void SpeecilTweaksFlowCoordinator::DidActivate(bool firstActivation, bool addedT
 
 void SpeecilTweaksFlowCoordinator::BackButtonWasPressed(HMUI::ViewController *topViewController)
 {
+    this->parentFlowCoordinator->DismissFlowCoordinator(this, HMUI::ViewController::AnimationDirection::Horizontal, nullptr, false);
     if (orig != getMainConfig().DisableAllDebris.GetValue())
     {
-        getLogger().info("LMFAOO cfing debirs not the same");
-        UnityEngine::Resources::UnloadUnusedAssets();
-        UnityEngine::Resources::FindObjectsOfTypeAll<GlobalNamespace::MenuTransitionsHelper *>().FirstOrDefault()->RestartGame(nullptr);
-    }
-    else
-    {
-        this->parentFlowCoordinator->DismissFlowCoordinator(this, HMUI::ViewController::AnimationDirection::Horizontal, nullptr, false);
+        for (auto particle : UnityEngine::Resources::FindObjectsOfTypeAll<UnityEngine::ParticleSystem *>())
+        {
+            if (particle->get_name() == "DustPS")
+            {
+                particle->get_gameObject()->SetActive(!getMainConfig().DisableAllDebris.GetValue());
+            }
+        }
     }
 }

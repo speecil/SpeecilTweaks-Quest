@@ -75,6 +75,14 @@ MAKE_AUTO_HOOK_MATCH(SceneManager_SetActiveScene, &UnityEngine::SceneManagement:
             }
         }
     }
+    // Rumble
+    if(sceneName == "GameCore" && getMainConfig().DisableRumble.GetValue()){
+        UnityEngine::Resources::FindObjectsOfTypeAll<GlobalNamespace::HapticFeedbackController *>().FirstOrDefault()->get_gameObject()->SetActive(false);
+    }
+    else{
+        UnityEngine::Resources::FindObjectsOfTypeAll<GlobalNamespace::HapticFeedbackController *>().FirstOrDefault()->get_gameObject()->SetActive(true);
+    }
+
     return result;
 }
 

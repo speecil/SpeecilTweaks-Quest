@@ -15,8 +15,8 @@ DECLARE_CONFIG(MainConfig,
     CONFIG_VALUE(DisableAllDebris, bool, "Disable All Debris", true);
     CONFIG_VALUE(EnablePMenuTweaks, bool, "Enable Pause Menu Tweaks?", true);
     CONFIG_VALUE(PMenuColour, Color, "Pause Song Name Colour", Color(0.1, 0.3, 1.0, 1.0));
+    CONFIG_VALUE(PMenuTextColour, Color, "Pause BG Colour", Color(0.8, 1.0, 0.4, 1.0));
     CONFIG_VALUE(inMulti, bool, "inMulti", false);
-    CONFIG_VALUE(DisableBlur, bool, "Disable Motion Blur", false);
     CONFIG_VALUE(safetySkip, bool, "Disable Health and Safety warning", false);
     CONFIG_VALUE(DisableRumble, bool, "Disable All In Game Rumble", false);
     CONFIG_VALUE(DisableHitScore, bool, "Disable Hit Score", false);

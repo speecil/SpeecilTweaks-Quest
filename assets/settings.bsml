@@ -17,6 +17,7 @@
                 <vertical bg="round-rect-panel" pad="2" size-delta-y="-15" size-delta-x="5">
                     <toggle-setting value="EnablePMenuTweaks" text="Enable Pause Menu Tweaks" apply-on-change="true" hover-hint="Removes unnecessary info on the pause menu and increases the song name size"/>
                     <color-setting value="PMenuColour" text="Pause Menu Text Colour" apply-on-change="true" hover-hint="The colour of the song name if pause menu tweaks are enabled"/>
+                    <color-setting value="PMenuTextColour" text="Pause Menu Background Colour" apply-on-change="true" hover-hint="The colour of the background bar if pause menu tweaks are enabled"/>
                 </vertical>
             </tab>
             <tab tab-name="Results Screen" tags="tabs2">
@@ -30,9 +31,7 @@
         </tab>
         <tab tab-name="Gameplay" tags="tabs">
             <vertical bg="round-rect-panel" pad="2" spacing="4">
-                <text text="Gameplay" font-align="Top" font-size="7" />
-                <toggle-setting value="DisableAllDebris" text="Disable ALL Particles/Debris (restart on toggle)" apply-on-change="true" hover-hint="A one click button to disable all particles and debris (will restart on toggle)"/>
-                <toggle-setting value="DisableBlur" text="Disable Blur" apply-on-change="true" hover-hint="Disables the blur on the saber"/>
+                <toggle-setting value="DisableAllDebris" text="Disable ALL Particles/Debris" apply-on-change="true" hover-hint="A one click button to disable all particles and debris"/>
                 <toggle-setting value="DisableRumble" text="Disable Gameplay Rumble" apply-on-change="true" hover-hint="Disables all rumble in gameplay"/>                
                 <toggle-setting value="DisableHitScore" text="Disable Hitscore" apply-on-change="true" hover-hint="Disables the hit score when you hit a note"/>                
             </vertical>

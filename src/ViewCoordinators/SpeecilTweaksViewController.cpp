@@ -23,7 +23,7 @@ namespace SpeecilTweaks::UI
             BSML::parse_and_construct(IncludedAssets::settings_bsml, this->get_transform(), this);
         }
     }
-
+    
     void SpeecilTweaksUI::Patreon()
     {
         Application::OpenURL("https://discord.gg/BBZeJSKvxh");
@@ -48,6 +48,9 @@ namespace SpeecilTweaks::UI
 
     Color SpeecilTweaksUI::get_rfBackColour() { return getMainConfig().rfBackColour.GetValue(); }
     void SpeecilTweaksUI::set_rfBackColour(Color value) { getMainConfig().rfBackColour.SetValue(value); }
+
+    Color SpeecilTweaksUI::get_PMenuTextColour() { return getMainConfig().PMenuTextColour.GetValue(); }
+    void SpeecilTweaksUI::set_PMenuTextColour(Color value) { getMainConfig().PMenuTextColour.SetValue(value); }
 
     StringW SpeecilTweaksUI::get_aText() { return getMainConfig().aText.GetValue(); }
     void SpeecilTweaksUI::set_aText(StringW value)
@@ -85,9 +88,6 @@ namespace SpeecilTweaks::UI
 
     bool SpeecilTweaksUI::get_DisableAllDebris() { return getMainConfig().DisableAllDebris.GetValue(); }
     void SpeecilTweaksUI::set_DisableAllDebris(bool value) { getMainConfig().DisableAllDebris.SetValue(value); }
-
-    bool SpeecilTweaksUI::get_DisableBlur() { return getMainConfig().DisableBlur.GetValue(); }
-    void SpeecilTweaksUI::set_DisableBlur(bool value) { getMainConfig().DisableBlur.SetValue(value); }
 
     bool SpeecilTweaksUI::get_EnablePMenuTweaks() { return getMainConfig().EnablePMenuTweaks.GetValue(); }
     void SpeecilTweaksUI::set_EnablePMenuTweaks(bool value) { getMainConfig().EnablePMenuTweaks.SetValue(value); }

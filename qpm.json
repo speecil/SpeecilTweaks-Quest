@@ -4,7 +4,7 @@
   "info": {
     "name": "Speecil Tweaks",
     "id": "SpeecilTweaks",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "url": null,
     "additionalData": {
       "overrideSoName": "libSpeecilTweaks.so"
@@ -26,23 +26,8 @@
       "additionalData": {}
     },
     {
-      "id": "codegen",
-      "versionRange": "^0.32.0",
-      "additionalData": {}
-    },
-    {
       "id": "beatsaber-hook",
       "versionRange": "^3.14.0",
-      "additionalData": {}
-    },
-    {
-      "id": "bsml",
-      "versionRange": "^0.2.10",
-      "additionalData": {}
-    },
-    {
-      "id": "questui",
-      "versionRange": "^0.17.10",
       "additionalData": {}
     },
     {
@@ -51,8 +36,28 @@
       "additionalData": {}
     },
     {
+      "id": "codegen",
+      "versionRange": "^0.33.0",
+      "additionalData": {}
+    },
+    {
+      "id": "bsml",
+      "versionRange": "^0.3.1",
+      "additionalData": {}
+    },
+    {
+      "id": "questui",
+      "versionRange": "^0.17.11",
+      "additionalData": {}
+    },
+    {
+      "id": "custom-types",
+      "versionRange": "^0.15.23",
+      "additionalData": {}
+    },
+    {
       "id": "config-utils",
-      "versionRange": "^1.0.1",
+      "versionRange": "^1.0.2",
       "additionalData": {}
     },
     {
@@ -60,5 +65,6 @@
       "versionRange": "^0.7.2",
       "additionalData": {}
     }
-  ]
+  ],
+  "workspace": null
 }
